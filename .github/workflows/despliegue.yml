@@ -22,7 +22,7 @@ jobs:
         run: docker build -t frontend-docker-despliegue:latest .
 
       - name: Iniciar contenedor y probar la aplicación
-        run: docker run --name containerDesplegado --network redProyecto -p 80:80 frontend-docker-despliegue:latest
+        run: docker run --name containerDesplegado -p 80:80 frontend-docker-despliegue:latest
 
       - name: Iniciar despliegue
         run: |
