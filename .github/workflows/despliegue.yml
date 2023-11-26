@@ -20,6 +20,5 @@ jobs:
         run: docker run --name containerDesplegado --network red -p 80:80 frontend-docker-despliegue:latest
 
       - name: Iniciar despliegue
-        run: |
-          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-          docker push frontend-docker-despliegue:latest
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+             docker push frontend-docker-despliegue:latest
