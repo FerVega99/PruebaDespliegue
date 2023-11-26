@@ -1,0 +1,30 @@
+name: Docker CI/CD
+
+on:
+  push:
+    branches:
+      - master  # Cambiar por tu rama principal
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v2
+        
+      - name: Instalar dependencias y compilar (ejemplo para proyectos de Angular)
+        run: |
+          npm install
+          npm run ng build
+
+      - name: Construir imagen Docker
+        run: docker build -t frontend-docker-despliegue:latest .
+
+      - name: Iniciar contenedor y probar la aplic-ación
+        run: docker run --name containerDesplegado --network red -p 80:80 frontend-docker-despliegue:latest
+
+      - name: Iniciar despliegue
+        run: |
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker push frontend-docker-despliegue:latest
