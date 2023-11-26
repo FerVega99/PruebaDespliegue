@@ -12,11 +12,6 @@ jobs:
     steps:
       - name: Checkout código
         uses: actions/checkout@v2
-        
-      - name: Instalar dependencias y compilar (ejemplo para proyectos de Angular)
-        run: |
-          npm install
-          npm run ng build
 
       - name: Construir imagen Docker
         run: docker build -t frontend-docker-despliegue:latest .
