@@ -1,0 +1,12 @@
+version: "3"
+services:
+  frontendDesplegado:
+    image: vegafernando/frontend-despliegue:latest
+    ports:
+     - 80:80
+    networks:
+      - red
+
+networks:
+  red:
+    driver: bridge 
