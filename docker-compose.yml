@@ -1,12 +1,19 @@
 version: "3"
 services:
-  frontendDesplegado:
-    image: vegafernando/frontend-despliegue:latest
-    ports:
-     - 80:80
-    networks:
-      - red
 
-networks:
-  red:
-    driver: bridge 
+  backendCartuchos:
+    imagen: 
+    restart: always
+    build: Backend_Cartuchos/.
+    ports:
+      - 8083:8083
+    enviroment:
+      MYSQL_HOST: mysqlCartuchos
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+  
+  frontendCartuchos:configs:
+    build: vegafernando/frontend-despliegue:latest
+    ports:
+      - 80:80
