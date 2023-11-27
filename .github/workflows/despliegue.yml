@@ -21,6 +21,3 @@ jobs:
 
       - name: Push to Docker Hub
         run: docker push vegafernando/frontend-despliegue:latest
-
-      - name: Iniciar contenedor y probar la aplicación
-        run: docker run --name frontend-dockerizado-desplegado --net red -p 80:80 vegafernando/frontend-despliegue:latest
